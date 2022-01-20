@@ -25,13 +25,15 @@ public class MarkdownParse {
                 || openParen == -1 || closeParen == -1){
                 break;
             }
-            if(nextOpenBracket != 0){
-                char checkImage = markdown.charAt(nextOpenBracket - 1);
-                if(!String.valueOf(checkImage).equals("!")){
+            if(openParen == nextCloseBracket + 1){
+                if(nextOpenBracket != 0){
+                    char checkImage = markdown.charAt(nextOpenBracket - 1);
+                    if(!String.valueOf(checkImage).equals("!")){
+                        toReturn.add(markdown.substring(openParen + 1, closeParen));
+                    }
+                }else{
                     toReturn.add(markdown.substring(openParen + 1, closeParen));
                 }
-            }else{
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
             currentIndex = closeParen + 1;
             // System.out.println(currentIndex);
