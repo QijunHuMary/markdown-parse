@@ -29,13 +29,13 @@ public class MarkdownParse {
                 if(nextOpenBracket != 0){
                     char checkImage = markdown.charAt(nextOpenBracket - 1);
                     if(!String.valueOf(checkImage).equals("!")){
-                        toReturn.add(markdown.substring(openParen + 1, closeParen));
+                        toReturn.add(markdown.substring(openParen + 1, closeParen).trim());
                     }
                 }else{
-                    toReturn.add(markdown.substring(openParen + 1, closeParen));
+                    toReturn.add(markdown.substring(openParen + 1, closeParen).trim());
                 }
             }
-            currentIndex = closeParen + 1;
+            currentIndex = nextCloseBracket + 1;
             // System.out.println(currentIndex);
         }
         return toReturn;
