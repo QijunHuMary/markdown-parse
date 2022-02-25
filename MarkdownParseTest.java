@@ -28,4 +28,25 @@ public class MarkdownParseTest {
         assertEquals(List.of("someLink.html"), 
             MarkdownParse.getLinks(contentsTest3));
     }
+
+    @Test
+    public void snippet1() throws IOException{
+        String contentsTest = Files.readString(Path.of("test6.md"));
+        assertEquals(List.of("`google.com", "google.com", "ucsd.edu", 
+            "ucsd.edu"), MarkdownParse.getLinks(contentsTest));
+    }
+
+    @Test
+    public void snippet2() throws IOException{
+        String contentsTest = Files.readString(Path.of("test7.md"));
+        assertEquals(List.of("a.com", "a(()).com", "example.com"), 
+            MarkdownParse.getLinks(contentsTest));
+    }
+
+    @Test
+    public void snippet3() throws IOException{
+        String contentsTest = Files.readString(Path.of("test8.md"));
+        assertEquals(List.of("https://ucsd-cse15l-w22.github.io/"), 
+            MarkdownParse.getLinks(contentsTest));
+    }
 }
